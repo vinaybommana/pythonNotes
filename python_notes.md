@@ -11,3 +11,10 @@
 * for a top-down approach you'd flip the same structure on its head and
   start with the highest-level building block first, fleshing out the details
   later.
+
+* vars -- function
+* key sharing dictionaries
+* ordered dicts are not only ordered but also very less size compared to 2.7 dicts
+
+* seperate chaining
+* pprint -- very helpful for nested datastructures.

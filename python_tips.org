@@ -1,0 +1,18 @@
+#+BEGIN_SRC python
+some_dict = {}
+some_dict[5.5] = "Ruby"
+some_dict[5.0] = "JavaScript"
+some_dict[5] = "python"
+
+#+END_SRC
+
+>>> some_dict[5.5]
+"Ruby"
+>>> some_dict[5.0]
+"python"
+>>> some_dict[5]
+"python"
+
+*** Python dictionaries check for equality and compare the hash value
+    to determine if two keys are same.
+*** Immutable objects with same value always have a same hash in python.
