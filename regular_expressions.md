@@ -37,7 +37,53 @@ Call `re.search(regex, subject)` to apply a regex pattern to a subject string. T
 
 Since `None` evaluates to `False`, you can easily use `re.search()` in an `if` statement. The `Match` object stores details about the part of the string matched by the regular expression pattern.
 
-### Macthing modes inside the regular expression
+### Matching modes inside the regular expression
 Normally, matching modes are specified outside the regular expression. In a programming language, you can pass them as a flag to the regex constructor or append them to the regex literal.
 
 `(?i)` makes the regex case insensitive `re.I`.
+
+### match function
+
+This function attempts to match RE **pattern** to string with optional flags.
+
+```python
+re.match(pattern, string, flags=0)
+
+```
+
+pattern --> This is the regular expression to be matched.
+
+string --> This is the string, which would be searched to match the pattern at the beginning of string.
+
+flags --> you can specify different flags using bitwise OR (|). These are modifiers
+
+The `re.match` function returns a **match** object on success, None on failure. We usegroup(num) or groups() function of **match** object to get matched expression.
+
+method object Method & description
+
+group(num=0) --> This method returns entire match
+(or specific subgroup num)
+
+groups() --> This method returns all matching subgroups in a tuple
+(empty if there weren't any.)
+
+### Regular Expression Modifiers: Option Flags
+Regular expression literals may include an optional modifier to control various aspects of matching. The modifiers are specified as an optional flag. You can provide multiple modifiers using exclusive OR(|)
+
+`re.I`
+performs case-insensitive matching.
+
+`re.L`
+Interprets words according to the current locale. This interpretatioin affects the alphabetic group (\w and \W), as well as word boundary behaviour (\b or \B).
+
+`re.M`
+Makes `$` match the end of the line (not the just the end of the string) and makes `^` match the start of any line (not just the start of the string.)
+
+`re.S`
+makes a period (dot) match any character, include newline.
+
+`re.U`
+Interprets letters according to the Unicode character set. This flag affects the behaviour \w, \W, \b, \B.
+
+`re.X`
+Permits "cuter" regular expression syntax. It ignores whitespace (except inside a set [] or when escaped by a backslash) and treats unescaped # as a comment marker.
