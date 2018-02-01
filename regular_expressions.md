@@ -28,6 +28,10 @@ More interestingly, searching for `foo.$` in `foo1\nfoo2\n` matches `foo2` norma
 
 `?` --> Causes the resulting RE to match 0 or 1 repetitions of the preceding RE. `ab?` will match either `a` or `ab`.
 
+
+`*?, +?, ??`
+	The `*`, `+`, and `?` qualifiers are all greedy; they match as much text as possible. Sometimes this behaviour is not desired; If the RE `<.*>` is matched against `<a> b <c>`, it will match the entire string, not just `<a>`. Adding `?` after the qualifier makes it perform the match in *non-greedy* or *minimal* fashion; as few characters as possible will be matched. Using the RE `<.*?>` will only match `<a>`.
+
 ## Regex Search and Match
 Call `re.search(regex, subject)` to apply a regex pattern to a subject string. The function returns `None` if the matching attemp fails, and a `Match` object otherwise.
 
@@ -36,4 +40,4 @@ Since `None` evaluates to `False`, you can easily use `re.search()` in an `if` s
 ### Macthing modes inside the regular expression
 Normally, matching modes are specified outside the regular expression. In a programming language, you can pass them as a flag to the regex constructor or append them to the regex literal.
 
-(?i) makes the regex case insensitive `re.I`.
+`(?i)` makes the regex case insensitive `re.I`.
