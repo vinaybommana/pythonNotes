@@ -37,6 +37,25 @@ Call `re.search(regex, subject)` to apply a regex pattern to a subject string. T
 
 Since `None` evaluates to `False`, you can easily use `re.search()` in an `if` statement. The `Match` object stores details about the part of the string matched by the regular expression pattern.
 
+**re.compile(pattern, flags=0)**
+
+compile a regular expression pattern into a regular expression object, which can be used for matching using its `match()`, `search()` and other methods.
+
+The expression's behaviour can be modified by specifying a *flags* value. Values can be any of the following variables, combined using bitwise OR (the | operator)
+
+the sequence
+```python
+prog = re.compile(pattern)
+result = prog.match(string)
+```
+
+is equivalent to
+```python
+result = re.match(pattern, string)
+```
+
+but using `re.compile` and saving the resulting regular expression object for reuse is more efficient when the expression will used several times in a single program.
+
 ### Matching modes inside the regular expression
 Normally, matching modes are specified outside the regular expression. In a programming language, you can pass them as a flag to the regex constructor or append them to the regex literal.
 
@@ -71,19 +90,35 @@ groups() --> This method returns all matching subgroups in a tuple
 Regular expression literals may include an optional modifier to control various aspects of matching. The modifiers are specified as an optional flag. You can provide multiple modifiers using exclusive OR(|)
 
 `re.I`
+`re.IGNORECASE`
 performs case-insensitive matching.
 
 `re.L`
+`re.LOCALE`
 Interprets words according to the current locale. This interpretatioin affects the alphabetic group (\w and \W), as well as word boundary behaviour (\b or \B).
 
 `re.M`
+`re.MULTILINE`
 Makes `$` match the end of the line (not the just the end of the string) and makes `^` match the start of any line (not just the start of the string.)
 
 `re.S`
+`re.DOTALL`
 makes a period (dot) match any character, include newline.
 
 `re.U`
 Interprets letters according to the Unicode character set. This flag affects the behaviour \w, \W, \b, \B.
 
 `re.X`
-Permits "cuter" regular expression syntax. It ignores whitespace (except inside a set [] or when escaped by a backslash) and treats unescaped # as a comment marker.
+`re.VERBOSE`
+This flag allows us to write regular expressions that look nices and are more readable by allowing you to visually seperate logical sections of the pattern and add comments.
+
+Whitespace within the pattern is ignored, except when in a character class, or when preceded by an unescaped backslash, or within tokens like `*?`, `(?:` or `(?P<...>`. When a line contains a `#` that is not in a character class and is not preceded by an unescaped backslash, all characters from the leftmost such `#` through the end of the line are ignored.
+
+```python
+a = re.compile(r"""\d + # the integral part
+	               \.   # the decimal part
+				   \d * # some fractional digits""", re.X)
+b = re.compile(r"\d+\.\d*")
+```
+
+corresponds to the inline flag `(?x)`.
