@@ -26,3 +26,6 @@ my_nums = square_numbers([1, 2, 3, 4, 5])
 for num in my_nums:
     print(num)
 ```
+
+`my_nums` is an iterable object.
+we can iterate over it either by `for` construct or using `next`.
