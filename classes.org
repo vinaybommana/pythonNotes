@@ -1,0 +1,68 @@
+- Never pass mutable datatypes to a functions as arguments
+- Instance variables and class variables
+- static, public and protected variables in python
+
+- decorators # annotations ??
+*** classmethods
+
+  - =@classmethod=
+  - class methods as alternative constructors
+  - take cls as default argument, so mandatory for usage.
+  - different from static methods
+
+*** static methods
+
+  - =@staticmethod=
+  - static methods don't take cls or instance arguments as default
+    argument
+
+- Method resolution order
+- Every class inherits from =builtins.object= like =Object()= class in
+  java
+
+** Inheriting from super class
+   :PROPERTIES:
+   :CUSTOM_ID: inheriting-from-super-class
+   :END:
+
+- =super().__init__(first, last, pay)=
+- =Employee.__init__(self, first, last, pay)=
+- =isinstance()= and =issubclass()=
+- =threading.Thread.__init__(self)=
+
+** First class functions
+   :PROPERTIES:
+   :CUSTOM_ID: first-class-functions
+   :END:
+
+#+BEGIN_SRC python
+    def yell(text):
+        return text.upper() + '!'
+#+END_SRC
+
+#+BEGIN_SRC sh
+    >>> yell('hello')
+    'HELLO!'
+#+END_SRC
+
+all data in python programs is represented by objects or relations
+between objects
+
+#+BEGIN_SRC sh
+    >>> bark = yell
+    >>> bark('woof')
+    'WOOF!'
+#+END_SRC
+
+- function objects and their names are two seperate concerns. we can
+  delete the function's original name =yell=
+- But another name =bark= still points to the underlying function
+
+#+BEGIN_SRC sh
+    >>> del yell
+    >>> yell('hello?')
+    # will give a NameError
+
+    >>> bark('hey')
+    'HEY!'
+#+END_SRC

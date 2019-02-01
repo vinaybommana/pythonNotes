@@ -1,0 +1,20 @@
+* Data visualization
+  :PROPERTIES:
+  :CUSTOM_ID: data-visualization
+  :END:
+
+- matplotlib
+- pandas
+- seaborn
+
+** jupyter notebooks
+   :PROPERTIES:
+   :CUSTOM_ID: jupyter-notebooks
+   :END:
+
+- bokeh
+- plotly
+
+- D3.js
+
+
