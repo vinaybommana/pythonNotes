@@ -1,6 +1,0 @@
-* pythonNotes
-  :PROPERTIES:
-  :CUSTOM_ID: pythonnotes
-  :END:
-
-python notes on important and tricky concepts
